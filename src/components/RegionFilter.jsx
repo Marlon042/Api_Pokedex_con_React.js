@@ -4,7 +4,7 @@ export function RegionFilter({ regions, total, selected, onSelect }) {
   const isAll = selected === "all";
   return (
     <div>
-      <p className="mb-2 text-xs font-bold uppercase tracking-widest text-slate-400">
+      <p className="mb-2 text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
         Región
       </p>
       <div className="flex flex-wrap gap-2">
@@ -13,7 +13,7 @@ export function RegionFilter({ regions, total, selected, onSelect }) {
           className={`rounded-full px-3 py-1.5 text-sm font-semibold transition ${
             isAll
               ? "bg-red-600 text-white"
-              : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+              : "bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
           }`}
         >
           Todas · {total}
@@ -26,7 +26,7 @@ export function RegionFilter({ regions, total, selected, onSelect }) {
             className={`rounded-full px-3 py-1.5 text-sm font-semibold capitalize transition ${
               selected === r.id
                 ? "bg-red-600 text-white ring-2 ring-red-300"
-                : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+                : "bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
             }`}
           >
             {r.label} · {r.count}

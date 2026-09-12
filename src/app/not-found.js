@@ -5,7 +5,7 @@ export default function NotFound() {
     <div className="mx-auto max-w-md py-20 text-center">
       <p className="text-6xl">👻</p>
       <h1 className="mt-4 text-3xl font-black">Pokémon no encontrado</h1>
-      <p className="mt-2 text-slate-400">
+      <p className="mt-2 text-slate-500 dark:text-slate-400">
         Ese nombre o número no existe en la Pokédex.
       </p>
       <Link

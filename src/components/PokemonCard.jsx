@@ -7,11 +7,11 @@ export function PokemonCard({ pokemon }) {
   return (
     <Link
       href={`/pokemon/${pokemon.name}`}
-      className="group relative overflow-hidden rounded-3xl border border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 p-4 transition hover:-translate-y-1 hover:border-slate-600 hover:shadow-2xl hover:shadow-black/50"
+      className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-slate-100 p-4 transition hover:-translate-y-1 hover:border-slate-400 hover:shadow-2xl hover:shadow-slate-300/50 dark:border-slate-800 dark:from-slate-900 dark:to-slate-950 dark:hover:border-slate-600 dark:hover:shadow-black/50"
     >
       <div className="flex items-start justify-between">
-        <span className="text-xs font-mono text-slate-500">#{idLabel}</span>
-        <span className="rounded-full bg-slate-800 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-slate-300 opacity-0 transition group-hover:opacity-100">
+        <span className="text-xs font-mono text-slate-400 dark:text-slate-500">#{idLabel}</span>
+        <span className="rounded-full bg-slate-200 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-slate-600 opacity-0 transition group-hover:opacity-100 dark:bg-slate-800 dark:text-slate-300">
           Ver →
         </span>
       </div>
@@ -43,13 +43,13 @@ export function PokemonCard({ pokemon }) {
 
 export function PokemonCardSkeleton() {
   return (
-    <div className="animate-pulse rounded-3xl border border-slate-800 bg-slate-900 p-4">
-      <div className="h-4 w-12 rounded bg-slate-800" />
-      <div className="mx-auto mt-4 h-32 w-32 rounded-2xl bg-slate-800" />
-      <div className="mx-auto mt-4 h-5 w-2/3 rounded bg-slate-800" />
+    <div className="animate-pulse rounded-3xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+      <div className="h-4 w-12 rounded bg-slate-200 dark:bg-slate-800" />
+      <div className="mx-auto mt-4 h-32 w-32 rounded-2xl bg-slate-200 dark:bg-slate-800" />
+      <div className="mx-auto mt-4 h-5 w-2/3 rounded bg-slate-200 dark:bg-slate-800" />
       <div className="mx-auto mt-2 flex justify-center gap-2">
-        <div className="h-5 w-16 rounded-full bg-slate-800" />
-        <div className="h-5 w-16 rounded-full bg-slate-800" />
+        <div className="h-5 w-16 rounded-full bg-slate-200 dark:bg-slate-800" />
+        <div className="h-5 w-16 rounded-full bg-slate-200 dark:bg-slate-800" />
       </div>
     </div>
   );

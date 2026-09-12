@@ -8,7 +8,7 @@ export function TypeFilter({ types, selected, onSelect }) {
         className={`rounded-full px-3 py-1.5 text-sm font-semibold capitalize transition ${
           selected === ""
             ? "bg-red-600 text-white"
-            : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+            : "bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
         }`}
       >
         Todos
@@ -20,7 +20,7 @@ export function TypeFilter({ types, selected, onSelect }) {
           className={`rounded-full px-3 py-1.5 text-sm font-semibold capitalize transition ${
             selected === t.name
               ? "bg-red-600 text-white ring-2 ring-red-300"
-              : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+              : "bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
           }`}
         >
           {t.name}

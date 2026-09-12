@@ -102,13 +102,13 @@ export function PokedexClient({ index, regions, types, initialCards }) {
     <div className="space-y-6">
       <div className="grid gap-4 lg:grid-cols-[1fr_320px]">
         <SearchBar value={query} onChange={handleQuery} />
-        <div className="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-900 px-4 py-3 text-sm">
-          <span className="text-slate-400">
-            <strong className="text-slate-100">{filtered.length}</strong> /{" "}
+        <div className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm dark:border-slate-800 dark:bg-slate-900">
+          <span className="text-slate-500 dark:text-slate-400">
+            <strong className="text-slate-900 dark:text-slate-100">{filtered.length}</strong> /{" "}
             {scopeTotal} Pokémon
             {activeRegion ? ` · ${activeRegion.label}` : " · Todas"}
           </span>
-          <span className="rounded-full bg-slate-800 px-3 py-1 font-mono text-xs">
+          <span className="rounded-full bg-slate-200 px-3 py-1 font-mono text-xs dark:bg-slate-800">
             pág {safePage}/{totalPages}
           </span>
         </div>

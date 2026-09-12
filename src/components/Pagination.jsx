@@ -17,7 +17,7 @@ export function Pagination({ page, totalPages, onPage }) {
       <button
         onClick={() => go(page - 1)}
         disabled={page === 1}
-        className="rounded-full bg-slate-800 px-4 py-2 text-sm font-bold disabled:opacity-40 hover:bg-slate-700"
+        className="rounded-full bg-slate-200 px-4 py-2 text-sm font-bold disabled:opacity-40 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700"
       >
         ← Prev
       </button>
@@ -31,7 +31,7 @@ export function Pagination({ page, totalPages, onPage }) {
             key={p}
             onClick={() => go(p)}
             className={`h-9 min-w-9 rounded-full px-3 text-sm font-bold ${
-              p === page ? "bg-red-600 text-white" : "bg-slate-800 hover:bg-slate-700"
+              p === page ? "bg-red-600 text-white" : "bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700"
             }`}
           >
             {p}
@@ -41,7 +41,7 @@ export function Pagination({ page, totalPages, onPage }) {
       <button
         onClick={() => go(page + 1)}
         disabled={page === totalPages}
-        className="rounded-full bg-slate-800 px-4 py-2 text-sm font-bold disabled:opacity-40 hover:bg-slate-700"
+        className="rounded-full bg-slate-200 px-4 py-2 text-sm font-bold disabled:opacity-40 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700"
       >
         Next →
       </button>
