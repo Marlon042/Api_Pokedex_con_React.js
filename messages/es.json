@@ -1,0 +1,74 @@
+{
+  "Header": {
+    "home": "Inicio",
+    "subtitle": "App Router + PokeAPI",
+    "toLight": "Cambiar a modo claro",
+    "toDark": "Cambiar a modo oscuro"
+  },
+  "Hero": {
+    "badge": "9 regiones · {total} Pokémon",
+    "title": "Tu Pokédex, ahora moderna.",
+    "description": "Explora por región —de Kanto a Paldea—, busca por nombre o número, filtra por tipo y pagina. Click en cualquier carta para ver stats, altura, peso y habilidades."
+  },
+  "Search": {
+    "placeholder": "Buscar por nombre o número… ej: pikachu o 25",
+    "clear": "Limpiar búsqueda"
+  },
+  "Region": {
+    "label": "Región",
+    "all": "Todas"
+  },
+  "Type": {
+    "all": "Todos"
+  },
+  "List": {
+    "count": "{count} / {total} Pokémon",
+    "page": "pág {page}/{total}",
+    "clear": "✕ Limpiar filtros ({count} resultados)"
+  },
+  "Grid": {
+    "empty": "Sin resultados",
+    "emptyHint": "Prueba con otro nombre, número o tipo.",
+    "view": "Ver →"
+  },
+  "Pagination": {
+    "prev": "← Prev",
+    "next": "Next →"
+  },
+  "Detail": {
+    "back": "← Volver a la Pokédex",
+    "height": "Altura",
+    "weight": "Peso",
+    "baseExp": "Exp base",
+    "stats": "Stats base",
+    "abilities": "Habilidades",
+    "hidden": "oculta",
+    "sprites": "Sprites",
+    "normalFront": "Normal · Frente",
+    "normalBack": "Normal · Espalda",
+    "shinyFront": "Shiny · Frente",
+    "shinyBack": "Shiny · Espalda"
+  },
+  "Footer": {
+    "devBy": "Desarrollado por Marlon Gutiérrez V.",
+    "role": "Ingeniero en Sistemas de la UNA",
+    "portfolio": "Portafolio personal",
+    "data": "Datos: PokeAPI"
+  },
+  "NotFound": {
+    "title": "Pokémon no encontrado",
+    "description": "Ese nombre o número no existe en la Pokédex.",
+    "home": "Volver al inicio"
+  },
+  "Error": {
+    "title": "Algo falló con la PokeAPI",
+    "retry": "Reintentar"
+  },
+  "Metadata": {
+    "title": "Pokédex Next — PokeAPI",
+    "description": "Pokédex moderna con Next.js App Router, búsqueda, filtros por tipo y paginación.",
+    "detailTitle": "#{id} {name} — Pokédex",
+    "detailDescription": "Stats, tipos y habilidades de {name}.",
+    "notFound": "Pokémon no encontrado"
+  }
+}

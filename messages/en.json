@@ -1,0 +1,74 @@
+{
+  "Header": {
+    "home": "Home",
+    "subtitle": "App Router + PokeAPI",
+    "toLight": "Switch to light mode",
+    "toDark": "Switch to dark mode"
+  },
+  "Hero": {
+    "badge": "9 regions · {total} Pokémon",
+    "title": "Your Pokédex, now modern.",
+    "description": "Explore by region —from Kanto to Paldea—, search by name or number, filter by type and paginate. Click any card to see stats, height, weight and abilities."
+  },
+  "Search": {
+    "placeholder": "Search by name or number… e.g.: pikachu or 25",
+    "clear": "Clear search"
+  },
+  "Region": {
+    "label": "Region",
+    "all": "All"
+  },
+  "Type": {
+    "all": "All"
+  },
+  "List": {
+    "count": "{count} / {total} Pokémon",
+    "page": "page {page}/{total}",
+    "clear": "✕ Clear filters ({count} results)"
+  },
+  "Grid": {
+    "empty": "No results",
+    "emptyHint": "Try another name, number or type.",
+    "view": "View →"
+  },
+  "Pagination": {
+    "prev": "← Prev",
+    "next": "Next →"
+  },
+  "Detail": {
+    "back": "← Back to the Pokédex",
+    "height": "Height",
+    "weight": "Weight",
+    "baseExp": "Base exp",
+    "stats": "Base stats",
+    "abilities": "Abilities",
+    "hidden": "hidden",
+    "sprites": "Sprites",
+    "normalFront": "Normal · Front",
+    "normalBack": "Normal · Back",
+    "shinyFront": "Shiny · Front",
+    "shinyBack": "Shiny · Back"
+  },
+  "Footer": {
+    "devBy": "Developed by Marlon Gutiérrez V.",
+    "role": "Systems Engineer, UNA",
+    "portfolio": "Personal portfolio",
+    "data": "Data: PokeAPI"
+  },
+  "NotFound": {
+    "title": "Pokémon not found",
+    "description": "That name or number doesn't exist in the Pokédex.",
+    "home": "Back to home"
+  },
+  "Error": {
+    "title": "Something failed with the PokeAPI",
+    "retry": "Retry"
+  },
+  "Metadata": {
+    "title": "Pokédex Next — PokeAPI",
+    "description": "Modern Pokédex with Next.js App Router, search, type filters and pagination.",
+    "detailTitle": "#{id} {name} — Pokédex",
+    "detailDescription": "Stats, types and abilities of {name}.",
+    "notFound": "Pokémon not found"
+  }
+}
