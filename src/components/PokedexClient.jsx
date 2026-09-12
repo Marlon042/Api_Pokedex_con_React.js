@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import {useTranslations} from 'next-intl';
 import { fetchTypeIds } from "@/lib/pokeapi";
 import { useDebounce } from "@/hooks/useDebounce";
 import { usePokemonDetails } from "@/hooks/usePokemonDetails";
@@ -21,6 +22,8 @@ function matchesQuery(entry, q) {
 }
 
 export function PokedexClient({ index, regions, types, initialCards }) {
+  const t = useTranslations('List');
+  const tRegion = useTranslations('Region');
   const [region, setRegion] = useState("all");
   const [query, setQuery] = useState("");
   const [type, setType] = useState("");
@@ -104,12 +107,11 @@ export function PokedexClient({ index, regions, types, initialCards }) {
         <SearchBar value={query} onChange={handleQuery} />
         <div className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm dark:border-slate-800 dark:bg-slate-900">
           <span className="text-slate-500 dark:text-slate-400">
-            <strong className="text-slate-900 dark:text-slate-100">{filtered.length}</strong> /{" "}
-            {scopeTotal} Pokémon
-            {activeRegion ? ` · ${activeRegion.label}` : " · Todas"}
+            {t('count', {count: filtered.length, total: scopeTotal})}
+            {activeRegion ? ` · ${activeRegion.label}` : ` · ${tRegion('all')}`}
           </span>
           <span className="rounded-full bg-slate-200 px-3 py-1 font-mono text-xs dark:bg-slate-800">
-            pág {safePage}/{totalPages}
+            {t('page', {page: safePage, total: totalPages})}
           </span>
         </div>
       </div>
@@ -131,7 +133,7 @@ export function PokedexClient({ index, regions, types, initialCards }) {
           }}
           className="text-sm font-semibold text-red-400 hover:text-red-300"
         >
-          ✕ Limpiar filtros ({filtered.length} resultados)
+          {t('clear', {count: filtered.length})}
         </button>
       )}
 

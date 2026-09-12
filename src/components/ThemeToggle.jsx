@@ -2,8 +2,10 @@
 
 import { useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
+import { useTranslations } from "next-intl";
 
 export function ThemeToggle() {
+  const t = useTranslations("Header");
   const { resolvedTheme, setTheme } = useTheme();
   // Evita mismatch de hidratación: en servidor siempre "no montado".
   const mounted = useSyncExternalStore(
@@ -23,8 +25,8 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      aria-label={isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
-      title={isDark ? "Modo claro" : "Modo oscuro"}
+      aria-label={isDark ? t("toLight") : t("toDark")}
+      title={isDark ? t("toLight") : t("toDark")}
       className="grid h-9 w-9 place-items-center rounded-full bg-slate-200 text-lg transition hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700"
     >
       {isDark ? "☀️" : "🌙"}

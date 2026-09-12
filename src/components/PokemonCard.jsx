@@ -1,8 +1,13 @@
+"use client";
+
+import {useLocale, useTranslations} from 'next-intl';
 import Image from "next/image";
-import Link from "next/link";
+import {Link} from '@/i18n/navigation';
 import { TypeBadge } from "./TypeBadge";
 
 export function PokemonCard({ pokemon }) {
+  const t = useTranslations('Grid');
+  const locale = useLocale();
   const idLabel = String(pokemon.id).padStart(4, "0");
   return (
     <Link
@@ -12,7 +17,7 @@ export function PokemonCard({ pokemon }) {
       <div className="flex items-start justify-between">
         <span className="text-xs font-mono text-slate-400 dark:text-slate-500">#{idLabel}</span>
         <span className="rounded-full bg-slate-200 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-slate-600 opacity-0 transition group-hover:opacity-100 dark:bg-slate-800 dark:text-slate-300">
-          Ver →
+          {t('view')}
         </span>
       </div>
       <div className="relative mx-auto h-32 w-32 transition duration-300 group-hover:scale-110">
@@ -33,8 +38,8 @@ export function PokemonCard({ pokemon }) {
         {pokemon.name}
       </h3>
       <div className="mt-2 flex flex-wrap justify-center gap-1.5">
-        {(pokemon.types ?? []).map((t) => (
-          <TypeBadge key={t} type={t} />
+        {(pokemon.types ?? []).map((type) => (
+          <TypeBadge key={type} type={type} locale={locale} />
         ))}
       </div>
     </Link>

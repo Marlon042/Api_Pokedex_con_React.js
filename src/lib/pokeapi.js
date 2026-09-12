@@ -74,16 +74,98 @@ export async function getPokemonListWithDetails(limit = 1025, offset = 0, batchS
 
 // ---- Regiones / generaciones (PokeAPI v2, endpoint /generation) ----
 export const GENERATION_META = [
-  { id: 1, label: "Kanto", from: 1, to: 151 },
-  { id: 2, label: "Johto", from: 152, to: 251 },
-  { id: 3, label: "Hoenn", from: 252, to: 386 },
-  { id: 4, label: "Sinnoh", from: 387, to: 493 },
-  { id: 5, label: "Teselia", from: 494, to: 649 },
-  { id: 6, label: "Kalos", from: 650, to: 721 },
-  { id: 7, label: "Alola", from: 722, to: 809 },
-  { id: 8, label: "Galar", from: 810, to: 905 },
-  { id: 9, label: "Paldea", from: 906, to: 1025 },
+  { id: 1, labels: { es: "Kanto", en: "Kanto" }, from: 1, to: 151 },
+  { id: 2, labels: { es: "Johto", en: "Johto" }, from: 152, to: 251 },
+  { id: 3, labels: { es: "Hoenn", en: "Hoenn" }, from: 252, to: 386 },
+  { id: 4, labels: { es: "Sinnoh", en: "Sinnoh" }, from: 387, to: 493 },
+  { id: 5, labels: { es: "Teselia", en: "Unova" }, from: 494, to: 649 },
+  { id: 6, labels: { es: "Kalos", en: "Kalos" }, from: 650, to: 721 },
+  { id: 7, labels: { es: "Alola", en: "Alola" }, from: 722, to: 809 },
+  { id: 8, labels: { es: "Galar", en: "Galar" }, from: 810, to: 905 },
+  { id: 9, labels: { es: "Paldea", en: "Paldea" }, from: 906, to: 1025 },
 ];
+
+export function generationLabel(meta, locale) {
+  return meta.labels?.[locale] ?? meta.labels?.es ?? "";
+}
+
+// Nombres de tipos por idioma (la API los da en inglés).
+export const TYPE_NAMES = {
+  es: {
+    normal: "normal",
+    fighting: "lucha",
+    flying: "volador",
+    poison: "veneno",
+    ground: "tierra",
+    rock: "roca",
+    bug: "bicho",
+    ghost: "fantasma",
+    steel: "acero",
+    fire: "fuego",
+    water: "agua",
+    grass: "planta",
+    electric: "eléctrico",
+    psychic: "psíquico",
+    ice: "hielo",
+    dragon: "dragón",
+    dark: "siniestro",
+    fairy: "hada",
+    stellar: "estelar",
+    shadow: "sombra",
+    unknown: "desconocido",
+  },
+  en: {
+    normal: "normal",
+    fighting: "fighting",
+    flying: "flying",
+    poison: "poison",
+    ground: "ground",
+    rock: "rock",
+    bug: "bug",
+    ghost: "ghost",
+    steel: "steel",
+    fire: "fire",
+    water: "water",
+    grass: "grass",
+    electric: "electric",
+    psychic: "psychic",
+    ice: "ice",
+    dragon: "dragon",
+    dark: "dark",
+    fairy: "fairy",
+    stellar: "stellar",
+    shadow: "shadow",
+    unknown: "unknown",
+  },
+};
+
+export function typeName(type, locale) {
+  return TYPE_NAMES[locale]?.[type] ?? TYPE_NAMES.en[type] ?? type;
+}
+
+// Nombres de stats por idioma (la API los da en inglés).
+export const STAT_NAMES = {
+  es: {
+    hp: "PS",
+    attack: "Ataque",
+    defense: "Defensa",
+    "special-attack": "At. especial",
+    "special-defense": "Def. especial",
+    speed: "Velocidad",
+  },
+  en: {
+    hp: "HP",
+    attack: "Attack",
+    defense: "Defense",
+    "special-attack": "Special Attack",
+    "special-defense": "Special Defense",
+    speed: "Speed",
+  },
+};
+
+export function statName(stat, locale) {
+  return STAT_NAMES[locale]?.[stat] ?? stat.replace(/-/g, " ");
+}
 
 function rangeIds(from, to) {
   return Array.from({ length: to - from + 1 }, (_, i) => from + i);

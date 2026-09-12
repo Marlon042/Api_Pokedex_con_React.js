@@ -1,7 +1,11 @@
-import Link from "next/link";
+import {getTranslations} from 'next-intl/server';
+import {Link} from '@/i18n/navigation';
 import { ThemeToggle } from "./ThemeToggle";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
-export function Header() {
+export async function Header({locale}) {
+  const t = await getTranslations({locale, namespace: 'Header'});
+
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/80 backdrop-blur dark:border-slate-800 dark:bg-slate-950/80">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
@@ -13,16 +17,17 @@ export function Header() {
             <p className="text-lg font-extrabold leading-none tracking-tight">
               Pokédex <span className="text-red-600 dark:text-red-500">Next</span>
             </p>
-            <p className="text-xs text-slate-500 dark:text-slate-400">App Router + PokeAPI</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">{t('subtitle')}</p>
           </div>
         </Link>
         <nav className="flex items-center gap-2 text-sm">
+          <LanguageSwitcher />
           <ThemeToggle />
           <Link
             href="/"
             className="rounded-full bg-slate-200 px-4 py-2 font-semibold hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700"
           >
-            Inicio
+            {t('home')}
           </Link>
           <a
             href="https://pokeapi.co"
