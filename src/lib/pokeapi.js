@@ -5,6 +5,11 @@ export function getIdFromUrl(url) {
   return match ? Number(match[1]) : null;
 }
 
+export function getSpeciesIdFromUrl(url) {
+  const match = url?.match(/\/pokemon-species\/(\d+)\/?$/);
+  return match ? Number(match[1]) : null;
+}
+
 export function getSpriteUrl(id) {
   return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
 }
@@ -65,6 +70,84 @@ export async function getPokemonListWithDetails(limit = 1025, offset = 0, batchS
     detailed.push(...results);
   }
   return detailed;
+}
+
+// ---- Regiones / generaciones (PokeAPI v2, endpoint /generation) ----
+export const GENERATION_META = [
+  { id: 1, label: "Kanto", from: 1, to: 151 },
+  { id: 2, label: "Johto", from: 152, to: 251 },
+  { id: 3, label: "Hoenn", from: 252, to: 386 },
+  { id: 4, label: "Sinnoh", from: 387, to: 493 },
+  { id: 5, label: "Teselia", from: 494, to: 649 },
+  { id: 6, label: "Kalos", from: 650, to: 721 },
+  { id: 7, label: "Alola", from: 722, to: 809 },
+  { id: 8, label: "Galar", from: 810, to: 905 },
+  { id: 9, label: "Paldea", from: 906, to: 1025 },
+];
+
+function rangeIds(from, to) {
+  return Array.from({ length: to - from + 1 }, (_, i) => from + i);
+}
+
+export async function getGenerationSpecies(genId) {
+  const data = await fetchJson(`${API_BASE}/generation/${genId}`, 86400 * 7);
+  return (data.pokemon_species ?? [])
+    .map((s) => getSpeciesIdFromUrl(s.url))
+    .filter((id) => Number.isInteger(id) && id <= 1025)
+    .sort((a, b) => a - b);
+}
+
+// Mapa de regiones con ids exactos según la API; fallback a rangos estáticos si falla.
+export async function getRegions() {
+  const results = await Promise.all(
+    GENERATION_META.map(async (meta) => {
+      try {
+        const ids = await getGenerationSpecies(meta.id);
+        return { ...meta, ids: ids.length ? ids : rangeIds(meta.from, meta.to) };
+      } catch {
+        return { ...meta, ids: rangeIds(meta.from, meta.to) };
+      }
+    })
+  );
+  return results.map((r) => ({ ...r, count: r.ids.length }));
+}
+
+// ---- Detalle liviano para cards (seguro en server y cliente) ----
+export function toCardData(d) {
+  return {
+    id: d.id,
+    name: d.name,
+    sprite:
+      d.sprites?.other?.["official-artwork"]?.front_default ??
+      d.sprites?.front_default ??
+      getSpriteUrl(d.id),
+    types: d.types?.map((t) => t.type.name) ?? [],
+  };
+}
+
+export async function fetchPokemonCard(id) {
+  try {
+    const res = await fetch(`${API_BASE}/pokemon/${id}`);
+    if (!res.ok) throw new Error(`PokeAPI error: ${res.status}`);
+    return toCardData(await res.json());
+  } catch {
+    return null;
+  }
+}
+
+const typeIdsCache = new Map();
+
+export async function fetchTypeIds(type) {
+  if (typeIdsCache.has(type)) return typeIdsCache.get(type);
+  const res = await fetch(`${API_BASE}/type/${type}`);
+  if (!res.ok) throw new Error(`PokeAPI error: ${res.status}`);
+  const data = await res.json();
+  const ids = (data.pokemon ?? [])
+    .map((p) => getIdFromUrl(p.pokemon?.url))
+    .filter((id) => Number.isInteger(id) && id >= 1 && id <= 1025);
+  const unique = [...new Set(ids)].sort((a, b) => a - b);
+  typeIdsCache.set(type, unique);
+  return unique;
 }
 
 export const TYPE_COLORS = {
