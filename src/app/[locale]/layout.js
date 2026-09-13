@@ -29,7 +29,7 @@ export default async function LocaleLayout({children, params}) {
   const t = await getTranslations({locale, namespace: 'Footer'});
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning data-scroll-behavior="smooth">
       <body>
         <NextIntlClientProvider messages={messages}>
           <Providers>

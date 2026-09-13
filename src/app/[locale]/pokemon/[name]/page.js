@@ -78,7 +78,7 @@ export default async function PokemonPage({ params }) {
           <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
             <div className="relative h-56 w-56 shrink-0 drop-shadow-2xl">
               {artwork && (
-                <Image src={artwork} alt={pokemon.name} fill className="object-contain" priority />
+                <Image src={artwork} alt={pokemon.name} fill sizes="224px" className="object-contain" priority />
               )}
             </div>
             <div className="flex-1">
@@ -147,6 +147,7 @@ export default async function PokemonPage({ params }) {
                         src={s.src}
                         alt={s.label}
                         fill
+                        sizes="(max-width: 768px) 22vw, 140px"
                         className="object-contain p-1"
                       />
                       <span className="pointer-events-none absolute -top-2 left-1/2 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-lg border border-slate-200 bg-white px-2 py-1 text-[11px] font-bold text-slate-900 opacity-0 shadow-xl transition group-hover:opacity-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100">
